@@ -12,7 +12,14 @@ const MAX_RETRIES = 3;
 const TIMEOUT = 30000; // 30秒超时
 
 // 中间件配置
-app.use(cors());
+// 配置CORS中间件
+app.use(cors({
+    origin: true,
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.static('.'));
 
@@ -147,7 +154,7 @@ app.post('/chat', async (req, res) => {
 });
 
 // 启动服务器
-app.listen(port, '0.0.0.0', () => {
-    console.log(`服务器运行在 http://0.0.0.0:${port}`);
+app.listen(port, () => {
+    console.log(`服务器运行在 http://localhost:${port}`);
 
 });
