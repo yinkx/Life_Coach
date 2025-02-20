@@ -53,7 +53,6 @@ async function fetchWithRetry(url, options, retries = MAX_RETRIES) {
         }
     }
 }
-
 // 处理聊天请求
 app.post('/chat', async (req, res) => {
     try {
@@ -79,6 +78,10 @@ app.post('/chat', async (req, res) => {
             })
         });
 
+        // 检查响应状态
+        if (!response.ok) {
+            throw new Error(`API请求失败: ${response.status}`);
+        }
         // 使用更可靠的方式处理流式响应
         const stream = response.body;
         if (!stream) {
@@ -146,4 +149,5 @@ app.post('/chat', async (req, res) => {
 // 启动服务器
 app.listen(port, '0.0.0.0', () => {
     console.log(`服务器运行在 http://0.0.0.0:${port}`);
+
 });

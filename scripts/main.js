@@ -27,7 +27,7 @@ function addMessage(content, isUser = false) {
     const avatarDiv = document.createElement('div');
     avatarDiv.className = 'message__avatar';
     avatarDiv.innerHTML = `<img src="images/${isUser ? 'user' : 'ai'}-avatar.png" alt="${isUser ? '用户' : 'AI'}头像">`;
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message__content';
     contentDiv.textContent = content;

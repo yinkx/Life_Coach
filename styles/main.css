@@ -222,8 +222,8 @@ body {
 
 .input-form {
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
+    align-items: flex-end;
 }
 
 .input-form__textarea {
